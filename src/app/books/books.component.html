@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Autor</th>
+    <th>Título</th>
+    <th>ISBN</th>
+    <th>Publicación</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{book.autor}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.ISBN}}</td>
+      <td>{{book.publication_date}}</td>
+      <td>
+        <a href={{book.id}}><i class="fa fa-edit"></i></a>
+        <a href='{{book.id}}/edit'><i class="fa fa-shower"></i></a>
+        <a href='{{book.id}}/delete'><i class="fa fa-eraser"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

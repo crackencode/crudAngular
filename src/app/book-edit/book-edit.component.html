@@ -1,0 +1,25 @@
+<h1>Edit</h1>
+<form *ngIf="book">
+    <div class="form-group">
+        <label for="autor">Autor</label>
+        <input value={{book.autor}} type="text" class="form-control" id="autor" required>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Título</label>
+        <input value={{book.title}} type="text" class="form-control" id="title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input value={{book.ISBN}} type="text" class="form-control" id="isbn" required>
+    </div>
+
+    <div class="form-group">
+        <label for="date">Fecha de publicacion</label>
+        <input value={{book.publication_date}} type="text" class="form-control" id="date" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Editar</button>
+
+</form>
