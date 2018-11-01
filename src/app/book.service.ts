@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-
+import {HttpHeaders} from '@angular/common/http';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -9,35 +9,24 @@ import {Book} from './Book';
   providedIn: 'root'
 })
 export class BookService {
-  url = 'http://digitalgreen.local/api';
+  url = 'http://digitalgreen.local/api/books';
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+  }
 
   getBooks(): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books');
+    return this.http.get<Book[]>(this.url);
   }
 
   showBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id);
+    return this.http.get<Book>(this.url + '/' + id);
   }
 
   editBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id + '/edit');
+    return this.http.get<Book>(this.url + '/' + id);
   }
 
-  storeBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id);
-  }
-
-  updateBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id);
-  }
-
-  addBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id);
-  }
-
-  deleteBook(id: number): Observable<any> {
-    return this.http.get<Book[]>(this.url + '/books/' + id);
+  updateBook(data: Book, id: number) {
+    return this.http.put<Book>(this.url + '/' + id, data);
   }
 }

@@ -1,23 +1,44 @@
-<h1>Edit</h1>
-<form *ngIf="book">
+<h1>Edicion de libro</h1>
+
+<div *ngIf="success" class="alert-success">
+    Actualizado con exito.
+</div>
+
+<div *ngIf="fail" class="alert-success">
+    Error en la actualización.
+</div>
+
+<form *ngIf="book" (submit)="sendData()">
     <div class="form-group">
         <label for="autor">Autor</label>
-        <input value={{book.autor}} type="text" class="form-control" id="autor" required>
+        <input [(ngModel)]="book.autor" type="text" class="form-control" id="autor" name="autor" required>
+        <div *ngIf="errorAutor" class="alert alert-danger">
+            El campo autor debe tener entre 3 y 50 carácteres
+        </div>
     </div>
 
     <div class="form-group">
         <label for="title">Título</label>
-        <input value={{book.title}} type="text" class="form-control" id="title" required>
+        <input [(ngModel)]="book.title" type="text" class="form-control" id="title" name="title" required>
+        <div *ngIf="errorTitle" class="alert alert-danger">
+            El campo autor debe tener entre 3 y 100 carácteres
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="isbn">ISBN</label>
-        <input value={{book.ISBN}} type="text" class="form-control" id="isbn" required>
+        <label for="ISBN">ISBN</label>
+        <input [(ngModel)]="book.ISBN" type="text" class="form-control" id="ISBN" name="ISBN" required>
+        <div *ngIf="errorISBN" class="alert alert-danger">
+            El campo autor debe tener entre 3 y 50 carácteres
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="date">Fecha de publicacion</label>
-        <input value={{book.publication_date}} type="text" class="form-control" id="date" required>
+        <label for="publication_date">Fecha de publicacion</label>
+        <input [(ngModel)]="book.publication_date" type="date" class="form-control" id="publication_date" [max]="todaydate | date: 'yyyy-MM-dd'" name="publication_date" required>
+        <div *ngIf="errorDate" class="alert alert-danger">
+            El campo autor debe ser una fecha
+        </div>
     </div>
 
     <button type="submit" class="btn btn-success">Editar</button>
