@@ -11,7 +11,6 @@ import { BookService } from './book.service';
 import { BooksShowComponent } from './books-show/books-show.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookAddComponent } from './book-add/book-add.component';
-import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { BookStoreComponent } from './book-store/book-store.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { BookStoreComponent } from './book-store/book-store.component';
     BooksShowComponent,
     BookEditComponent,
     BookAddComponent,
-    BookDeleteComponent,
     BookStoreComponent,
   ],
   imports: [

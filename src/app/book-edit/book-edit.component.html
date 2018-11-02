@@ -1,10 +1,10 @@
-<h1>Edicion de libro</h1>
+<h1>Edición de libro</h1>
 
-<div *ngIf="success" class="alert-success">
+<div *ngIf="success" class="alert alert-success">
     Actualizado con exito.
 </div>
 
-<div *ngIf="fail" class="alert-success">
+<div *ngIf="fail" class="alert alert-danger">
     Error en la actualización.
 </div>
 
@@ -13,7 +13,7 @@
         <label for="autor">Autor</label>
         <input [(ngModel)]="book.autor" type="text" class="form-control" id="autor" name="autor" required>
         <div *ngIf="errorAutor" class="alert alert-danger">
-            El campo autor debe tener entre 3 y 50 carácteres
+            El campo Autor debe tener entre 3 y 50 carácteres
         </div>
     </div>
 
@@ -21,7 +21,7 @@
         <label for="title">Título</label>
         <input [(ngModel)]="book.title" type="text" class="form-control" id="title" name="title" required>
         <div *ngIf="errorTitle" class="alert alert-danger">
-            El campo autor debe tener entre 3 y 100 carácteres
+            El campo Título debe tener entre 1 y 100 carácteres
         </div>
     </div>
 
@@ -29,7 +29,7 @@
         <label for="ISBN">ISBN</label>
         <input [(ngModel)]="book.ISBN" type="text" class="form-control" id="ISBN" name="ISBN" required>
         <div *ngIf="errorISBN" class="alert alert-danger">
-            El campo autor debe tener entre 3 y 50 carácteres
+            El campo debe contener 10 o 13 numeros con formato ISBN
         </div>
     </div>
 
@@ -37,7 +37,7 @@
         <label for="publication_date">Fecha de publicacion</label>
         <input [(ngModel)]="book.publication_date" type="date" class="form-control" id="publication_date" [max]="todaydate | date: 'yyyy-MM-dd'" name="publication_date" required>
         <div *ngIf="errorDate" class="alert alert-danger">
-            El campo autor debe ser una fecha
+            La fecha debe ser anterior o igual al día actual
         </div>
     </div>
 
