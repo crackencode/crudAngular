@@ -11,6 +11,9 @@ import {Book} from '../Book';
 export class BooksComponent implements OnInit {
 
   books: Book[];
+  deleteError = false;
+  deleteId = 0;
+  deleteTitle = '';
 
   constructor(public service: BookService) {
     this.service.getBooks().subscribe(
@@ -24,5 +27,18 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  deleteData(id: number) {
+    console.log(id);
+    this.service.deleteBook(id).subscribe(
+      result => {
+        if (result) {
+          location.reload();
+        } else {
+          this.deleteError = true;
+        }
+      }
+    );
   }
 }

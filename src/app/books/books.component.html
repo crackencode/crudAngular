@@ -1,3 +1,9 @@
+<h1>Listado de libros</h1>
+
+<div *ngIf="deleteError" class="alert alert-danger">
+  Error en el borrado.
+</div>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -17,7 +23,7 @@
       <td>
         <a href={{book.id}}><i class="fa fa-edit"></i></a>
         <a href='{{book.id}}/edit'><i class="fa fa-shower"></i></a>
-        <a data-toggle="modal" data-target="#deleteModal"><i class="fa fa-eraser"></i></a>
+        <a data-toggle="modal" data-target="#deleteModal" (click)="deleteId = book.id; deleteTitle = book.title"><i class="fa fa-eraser"></i></a>
       </td>
     </tr>
   </tbody>
@@ -36,12 +42,13 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        ¿Seguro que quieres eliminar el libro?
+        ¿Seguro que quieres eliminar "{{deleteTitle}}"?
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="deleteData(deleteId)">Aceptar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
 
     </div>
