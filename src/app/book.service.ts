@@ -9,6 +9,7 @@ import {Book} from './Book';
   providedIn: 'root'
 })
 export class BookService {
+  // URL donde ataca la API
   url = 'http://digitalgreen.local/api/books';
 
   constructor(public http: HttpClient) {
