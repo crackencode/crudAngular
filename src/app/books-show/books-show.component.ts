@@ -13,6 +13,9 @@ export class BooksShowComponent implements OnInit {
 
   book: Book;
 
+  /**
+   * Mostramos el resultado del libro que queremos ver
+   */
   constructor(private route: ActivatedRoute, private service: BookService) {
     const id = +this.route.snapshot.paramMap.get('id');
 

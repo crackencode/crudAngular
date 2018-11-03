@@ -3,7 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import {BookService} from '../book.service';
 import {Book} from '../Book';
 import {ActivatedRoute} from '@angular/router';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-book-edit',
@@ -14,7 +13,6 @@ export class BookEditComponent implements OnInit {
 
   book: Book;
   todaydate: Date = new Date();
-  data: any;
 
   errorAutor = false;
   errorTitle = false;
@@ -23,6 +21,9 @@ export class BookEditComponent implements OnInit {
   success = false;
   fail = false;
 
+  /**
+   * Mostramos los datos del libro que vamos a editar
+   */
   constructor(private route: ActivatedRoute, private service: BookService) {
     const id = +this.route.snapshot.paramMap.get('id');
 
@@ -39,12 +40,16 @@ export class BookEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Enviamos los nuevos datos del libro a modificar
+   */
   sendData() {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.service.updateBook(this.book, id).subscribe(
       result => {
         if (result['errors']) {
+          // Si no pasa la validacion, mostramos los campos que estan mal
           this.errorAutor = false;
           this.errorTitle = false;
           this.errorISBN = false;
@@ -71,7 +76,6 @@ export class BookEditComponent implements OnInit {
           this.success = false;
           this.fail = true;
         } else {
-          console.log(result);
           this.errorAutor = false;
           this.errorTitle = false;
           this.errorISBN = false;

@@ -1,10 +1,11 @@
-<h1>Edición de libro</h1>
+<h1 class="text-center">Edición de libro</h1>
+<hr/>
 
-<div *ngIf="success" class="alert alert-success">
+<div *ngIf="success" class="alert alert-success text-center">
     Actualizado con exito.
 </div>
 
-<div *ngIf="fail" class="alert alert-danger">
+<div *ngIf="fail" class="alert alert-danger text-center">
     Error en la actualización.
 </div>
 
@@ -12,7 +13,7 @@
     <div class="form-group">
         <label for="autor">Autor</label>
         <input [(ngModel)]="book.autor" type="text" class="form-control" id="autor" name="autor" required>
-        <div *ngIf="errorAutor" class="alert alert-danger">
+        <div *ngIf="errorAutor" class="alert alert-danger text-center">
             El campo Autor debe tener entre 3 y 50 carácteres
         </div>
     </div>
@@ -20,7 +21,7 @@
     <div class="form-group">
         <label for="title">Título</label>
         <input [(ngModel)]="book.title" type="text" class="form-control" id="title" name="title" required>
-        <div *ngIf="errorTitle" class="alert alert-danger">
+        <div *ngIf="errorTitle" class="alert alert-danger text-center">
             El campo Título debe tener entre 1 y 100 carácteres
         </div>
     </div>
@@ -28,19 +29,29 @@
     <div class="form-group">
         <label for="ISBN">ISBN</label>
         <input [(ngModel)]="book.ISBN" type="text" class="form-control" id="ISBN" name="ISBN" required>
-        <div *ngIf="errorISBN" class="alert alert-danger">
+        <div *ngIf="errorISBN" class="alert alert-danger text-center">
             El campo debe contener 10 o 13 numeros con formato ISBN
         </div>
     </div>
 
     <div class="form-group">
         <label for="publication_date">Fecha de publicacion</label>
-        <input [(ngModel)]="book.publication_date" type="date" class="form-control" id="publication_date" [max]="todaydate | date: 'yyyy-MM-dd'" name="publication_date" required>
-        <div *ngIf="errorDate" class="alert alert-danger">
+        <input [(ngModel)]="book.publication_date" type="date" class="form-control" id="publication_date"
+               [max]="todaydate | date: 'yyyy-MM-dd'" name="publication_date" required>
+        <div *ngIf="errorDate" class="alert alert-danger text-center">
             La fecha debe ser anterior o igual al día actual
         </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Editar</button>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <input type="submit" value="Editar" class="btn btn-success"/>
+        </div>
+
+        <div class="col-md-4 text-right">
+            <a href="/" class="btn btn-info">Volver</a>
+        </div>
+    </div>
 
 </form>

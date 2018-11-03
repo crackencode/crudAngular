@@ -1,6 +1,42 @@
-<p *ngIf="book">
-  <li>Autor: {{book.autor}}</li>
-  <li>Título: {{book.title}}</li>
-  <li>ISBN: {{book.ISBN}}</li>
-  <li>Publicacion: {{book.publication_date}}</li>
-</p>
+<h1 class="text-center">Datos del libro</h1>
+<hr/>
+
+<div *ngIf="book">
+    <ul class="list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4"><strong>Título:</strong></div>
+                <div class="col-md-4 text-center">{{book.title}}</div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4"><strong>Autor:</strong></div>
+                <div class="col-md-4 text-center">{{book.autor}}</div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4"><strong>ISBN:</strong></div>
+                <div class="col-md-4 text-center">{{book.ISBN}}</div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4"><strong>Fecha de publicación:</strong></div>
+                <div class="col-md-4 text-center">{{book.publication_date | date: 'dd-MM-yyyy'}}</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+        <a href="edit/{{book.id}}" class="btn btn-success">Editar</a>
+    </div>
+
+    <div class="col-md-4 text-right">
+        <a href="/" class="btn btn-info">Volver</a>
+    </div>
+</div>

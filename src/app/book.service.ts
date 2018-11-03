@@ -33,4 +33,8 @@ export class BookService {
   deleteBook(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id);
   }
+
+  createBook(data: Book): Observable<any> {
+    return this.http.post(this.url, data);
+  }
 }
