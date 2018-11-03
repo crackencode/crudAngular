@@ -68,7 +68,11 @@ export class BooksComponent implements OnInit {
         // Listado de paginas a mostrar
         this.listPages = [];
         for (let i = 1; i <= this.totalPages; i++) {
-          this.listPages.push(i);
+          let active = '';
+          if (this.page === i) {
+            active = 'active';
+          }
+          this.listPages.push({'page': i, 'active': active});
         }
 
         this.books = this.booksResult;

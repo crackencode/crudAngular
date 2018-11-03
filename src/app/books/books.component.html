@@ -24,10 +24,13 @@
             <td>{{book.publication_date | date: 'dd-MM-yyyy'}}</td>
             <td>
                 <div class="row">
-                    <div class="col-md-4 text-center"><a href='show/{{book.id}}'><i class="fa fa-eye"></i></a></div>
-                    <div class="col-md-4 text-center"><a href='edit/{{book.id}}'><i class="fa fa-edit"></i></a></div>
+                    <div class="col-md-4 text-center"><a href='show/{{book.id}}' title="Ver datos"><i
+                            class="fa fa-eye"></i></a></div>
+                    <div class="col-md-4 text-center"><a href='edit/{{book.id}}' title="editar"><i
+                            class="fa fa-edit"></i></a></div>
                     <div class="col-md-4 text-center"><a data-toggle="modal" data-target="#deleteModal"
-                                                         (click)="deleteId = book.id; deleteTitle = book.title"><i
+                                                         (click)="deleteId = book.id; deleteTitle = book.title"
+                                                         title="borrar"><i
                             class="fa fa-trash"></i></a></div>
                 </div>
             </td>
@@ -36,11 +39,12 @@
     </table>
 
     <div *ngIf="numBooks" class="pagination">
-
         <ul class="pagination">
             <li *ngIf="page > 1" class="page-item" (click)="previousPage()"><a class="page-link" href="#"> < </a></li>
-            <li *ngFor="let numPage of listPages" class="page-item" (click)="goToPage(numPage)"><a class="page-link" href="#">{{numPage}}</a></li>
-            <li *ngIf="page < totalPages" class="page-item" (click)="nextPage()"><a class="page-link" href="#"> > </a></li>
+            <li *ngFor="let numPage of listPages" class="page-item {{numPage.active}}" (click)="goToPage(numPage.page)">
+                <a class="page-link" href="#">{{numPage.page}}</a></li>
+            <li *ngIf="page < totalPages" class="page-item" (click)="nextPage()"><a class="page-link" href="#"> > </a>
+            </li>
         </ul>
     </div>
 </div>
